@@ -1,0 +1,9 @@
+<md-list ng-cloak>
+    <md-subheader class="md-no-sticky">Liste des utilisateurs</md-subheader>
+    <md-list-item ng-repeat="user in userCtrl.users" layout="row">
+        <p>{{user.lastname}}</p>
+        <p>{{user.firstname}}</p>
+        <p>{{user.create_date}}</p>
+        <p>{{user.pseudonyme}}</p>
+    </md-list-item>
+</md-list>

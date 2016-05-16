@@ -1,0 +1,99 @@
+
+.info, .success, .warning, .error, .validation {
+    border: 1px solid;
+    margin: 10px 0px;
+    padding:15px 10px 15px 50px;
+}
+
+.info {
+    color: #00529B;
+    background-color: #BDE5F8;
+}
+
+.success {
+    color: #4F8A10;
+    background-color: #DFF2BF;
+}
+
+.warning {
+    color: #9F6000;
+    background-color: #FEEFB3;
+}
+
+.error {
+    color: #D8000C;
+    background-color: #FFBABA;
+}
+
+md-list-item.md-2-line {
+    height : 360px;
+}
+
+table {
+    width: 100%;
+}
+
+.score input {
+    text-align : center;
+}
+
+.pair {
+    border-collapse: separate;
+    color: rgb(0, 0, 0);
+    font-family: Roboto, 'Helvetica Neue', sans-serif;
+    font-size: 14px;
+    font-style: normal;
+    font-variant: normal;
+    font-weight: 500;
+    height: 14px;
+    line-height: 14px;
+    padding-top: 16px;
+    text-align: center;
+    white-space: normal;
+    width: 92px;
+    background-color : #FFFFCC;
+}
+
+.impair {
+    border-collapse: separate;
+    color: rgb(0, 0, 0);
+    font-family: Roboto, 'Helvetica Neue', sans-serif;
+    font-size: 14px;
+    font-style: normal;
+    font-variant: normal;
+    font-weight: 500;
+    height: 14px;
+    line-height: 14px;
+    padding-top: 16px;
+    text-align: center;
+    white-space: normal;
+    width: 92px;
+    background-color : #0099FF;
+}
+
+.horaire {
+    width: 25%;
+    text-align :center;
+    font-family : 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+.equipe {
+    width: 30%;
+    text-align :center;
+    font-family : 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+
+}
+
+.score {
+    width: 5%;
+    text-align :center;
+}
+
+.separation {
+    width: 5%;
+    text-align :center;
+}
+
+.border {
+    background-color : green;
+}

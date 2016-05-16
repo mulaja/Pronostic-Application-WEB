@@ -1,0 +1,43 @@
+<md-content md-theme="docs-dark" layout-gt-sm="row" layout-padding>
+    <div layout="column" ng-cloak class="md-inline-form">
+
+        <div class="error" ng-show="authentificationCtrl.error" ng-bind="authentificationCtrl.error"></div>
+
+        <form name="authentificationCtrl.loginForm" class="css-form" novalidate>
+            <div>
+
+                <md-input-container class="md-icon-float md-block">
+                    <label>Login</label>
+                    <md-icon md-svg-src="../img/icons/ic_perm_identity_black_24px.svg" class="name"></md-icon>
+                    <input required name="login" ng-model="authentificationCtrl.user.pseudonyme">
+
+                    <div ng-messages="authentificationCtrl.loginForm.login.$error">
+                        <div ng-message="required">This is required.</div>
+                    </div>
+                </md-input-container>
+
+                <md-input-container class="md-icon-float md-block">
+                    <label>Mot de passe</label>
+                    <md-icon md-svg-src="../img/icons/ic_perm_identity_black_24px.svg" class="name"></md-icon>
+                    <input required name="password" ng-model="authentificationCtrl.user.password" type="password">
+
+                    <div ng-messages="authentificationCtrl.loginForm.password.$error">
+                        <div ng-message="required">This is required.</div>
+                    </div>
+                </md-input-container>
+
+            </div>
+
+            <div>
+                <md-input-container class="md-block">
+                    <md-button ng-disabled="authentificationCtrl.loginForm.$invalid" class="md-raised" ng-click="authentificationCtrl.submitLogin()">Login</md-button>
+                </md-input-container>
+                <md-input-container class="md-block">
+                    <md-button class="md-raised" ng-click="authentificationCtrl.inscription()">Inscription</md-button>
+                </md-input-container>
+            </div>
+
+        </form>
+
+    </div>
+</md-content>
