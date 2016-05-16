@@ -5,7 +5,7 @@ angular.module('module')
 
     var calendarCtrl = this;
 
-    // Boolean pour determiner si l'utilisateur est connecté
+    // Boolean pour determiner si l'utilisateur est connectï¿½
     calendarCtrl.isConnected = function () {
         return authentificationService.isConnected();
     };
@@ -41,12 +41,116 @@ angular.module('module')
 
             }).catch(function (message) {
                 calendarCtrl.class = "warning";
-                calendarCtrl.message = message.message;
+                calendarCtrl.message = message;
             });
         }
     };
 
-    // On récupère la liste des matchs
+    // Fonction pour modifier un groupe
+    calendarCtrl.modifieGroupe = function(id_groupe){
+        
+        var groupe = {};
+        groupe.user = [];
+        
+        groupe.id = id_groupe;
+        
+        for (var i = 0; i < calendarCtrl.users.length; i++) {
+            if( calendarCtrl.users[i].check ){
+                groupe.user.push(calendarCtrl.users[i]);
+            }
+        }
+        calendarService.modifyGroup(groupe).then(function (groupes) {
+            calendarCtrl.majListeGroupes();
+        }).catch(function(message){
+            calendarCtrl.message = message;
+        });
+        
+    }
+    
+    // Fonction pour crÃ©er un groupe
+    calendarCtrl.ajoutGroupe = function(){
+        
+        var groupe = {};
+        groupe.user = [];
+        
+        groupe.nom = calendarCtrl.nomGroupe;
+        
+        for (var i = 0; i < calendarCtrl.users.length; i++) {
+            if( calendarCtrl.users[i].check ){
+                groupe.user.push(calendarCtrl.users[i]);
+            }
+        }
+        calendarService.addGroup(groupe).then(function (groupes) {
+            calendarCtrl.majListeGroupes();
+        }).catch(function(message){
+            calendarCtrl.message = message;
+        });
+        
+    }
+
+    // Fonction se dÃ©inscrire d'un groupe
+    calendarCtrl.deinscription = function($id_groupe){
+        calendarService.deinscriptionGroupe(authentificationService.getUser().id,$id_groupe).then(function(response){
+            calendarCtrl.majListeGroupes();
+        }).catch(function(message){
+            calendarCtrl.message = message;
+        });
+    };
+
+    // On rÃ©cupÃ¨re la liste des groupes de l'utilisateur
+    calendarCtrl.majListeGroupes = function(){
+         if (calendarCtrl.isConnected()) {
+             calendarService.getGroups(authentificationService.getUser().id).then(function(groups){
+                
+                calendarCtrl.groups = [];
+                 
+                for(var index=0; index < groups.length; index++){
+                    var classement = calendarCtrl.tri(groups[index].classement, calendarCtrl.compare);
+                    
+                    // On ajoute le rang
+                    var rang = 1;
+                    var points = classement[0].points;
+                    var winners = classement[0].winners;
+                    var scores = classement[0].scores;
+                    var rangs =[];
+                    
+                    for (var i = 0; i < classement.length; i++) {
+
+                        if (classement[i].points < points || classement[i].winners < winners || classement[i].scores < scores) {
+                            rang++;
+                        }
+
+                        rangs.push({ rang: rang, id: classement[i].id, pseudonyme: classement[i].pseudonyme, points: classement[i].points, winners: classement[i].winners, scores: classement[i].scores });
+
+                        points = classement[i].points;
+                        winners = classement[i].winners;
+                        scores = classement[i].scores;
+                    }                  
+                    calendarCtrl.groups.push({id : groups[index].id, nom : groups[index].nom, classement : rangs});
+                }
+                
+                if( calendarCtrl.users ) {
+                    for(var index=0; index < calendarCtrl.users.length; index++){
+                        delete calendarCtrl.users[index].check;
+                    }
+                }
+                
+                calendarCtrl.affiche = [];
+                 
+             });
+        }
+    };
+
+    // Afficher la liste des utilisateurs
+    calendarCtrl.afficheListe = function(id){
+        calendarCtrl.affiche[id] = true;
+    };
+    
+    calendarCtrl.isAffichable = function(id){
+      return calendarCtrl.affiche[id];
+    };
+
+    // On rï¿½cupï¿½re la liste des matchs
     calendarService.getListFixtures().then(function (fixtures) {
         calendarCtrl.fixtures = fixtures;
     });
@@ -75,14 +179,14 @@ angular.module('module')
             }
         }
         return true;
-    };
+    }; 
 
     // Algorithme de tri
     calendarCtrl.tri = function (rangs, f) {
         for (var i = 0 ; i < rangs.length; i++) {
-            // le tableau est trié de 0 à i-1
+            // le tableau est triï¿½ de 0 ï¿½ i-1
             // La boucle interne recherche le maximum  
-            // de i+1 à la fin du tableau. 
+            // de i+1 ï¿½ la fin du tableau. 
             for (var j = i + 1; j < rangs.length; j++) {
                 if (f(rangs[j], rangs[i])) {
                     var temp = rangs[j];
@@ -94,7 +198,7 @@ angular.module('module')
         return rangs;
     };
 
-    // On récupère le classement
+    // On rï¿½cupï¿½re le classement
     if (calendarCtrl.isConnected()) {
 
         calendarCtrl.rangs = [];
@@ -124,11 +228,21 @@ angular.module('module')
         });
     }
 
-    // On récupère les pronostics
+    // On rï¿½cupï¿½re les pronostics
     if (calendarCtrl.isConnected()) {
         calendarService.getListPronostics(authentificationService.getUser().id).then(function (pronostics) {
             calendarCtrl.pronostics = pronostics;
         });
     }
-
+    
+    // On rï¿½cupï¿½re la liste des utilisateurs
+    if (calendarCtrl.isConnected()) {
+        calendarService.getUsers().then(function (users) {
+            calendarCtrl.users = users;
+        });
+    }
+    
+    // Mise Ã  jour des groupes
+    calendarCtrl.majListeGroupes();
+    
 }]);

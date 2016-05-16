@@ -8,6 +8,8 @@ angular.module('module')
             urlSoccerseasonsEuropeanChampionships: 'http://api.football-data.org/v1/soccerseasons/424',
             urlListPronostics: 'http://mulaja.esy.es/rest.php/Prognosis',
             urlListRangs: 'http://mulaja.esy.es/rest.php/Rangs',
+            urlListUsers: 'http://mulaja.esy.es/rest.php/Users',
+            urlListGroups: 'http://mulaja.esy.es/rest.php/Groups',
             headers: { headers: { 'X-Auth-Token': 'c704e31943a3421f99e72eb5b6c4fdc6' }, method: 'GET' },
             getListFixtures: function () {
 
@@ -29,7 +31,7 @@ angular.module('module')
                         listFixtures[date].push(response.data.fixtures[i]);
                     }
 
-                    // Création de l'objet complexe
+                    // Crï¿½ation de l'objet complexe
                     for (var fixture in listFixtures) {
                         listDates.push({ date: new Date(fixture).getTime(), data: listFixtures[fixture] });
                     }
@@ -54,7 +56,7 @@ angular.module('module')
                         listPronostics[date].push(response.data[i]);
                     }
 
-                    // Création de l'objet complexe
+                    // Crï¿½ation de l'objet complexe
                     for (var pronostic in listPronostics) {
                         listDates.push({ date: new Date(pronostic).getTime(), data: listPronostics[pronostic] });
                     }
@@ -65,12 +67,51 @@ angular.module('module')
             savePrognosis: function (pronostics) {
                 return $http.post(this.urlListPronostics, pronostics).then(function (response) {
                     return response.data;
+                }).catch(function(error){
+                    return error.message;
                 });
 
             },
             getRangs: function () {
                 return $http.get(this.urlListRangs).then(function (response) {
                     return response.data;
+                }).catch(function(error){
+                    return error.message;
+                });
+            },
+            getUsers : function(){
+                return $http.get(this.urlListUsers).then(function (response) {
+                    return response.data;
+                }).catch(function(error){
+                    return error.message;
+                });
+            },
+            addGroup : function(group){
+                return $http.post(this.urlListGroups, group).then(function (response) {
+                    return response.data;
+                }).catch(function(error){
+                    return error.message;
+                });
+            },
+            getGroups : function(idUser){
+                 return $http.get(this.urlListGroups+'/'+idUser).then(function (response) {
+                    return response.data;
+                }).catch(function(error){
+                    return error.message;
+                });
+            },
+            modifyGroup : function(group){
+                return $http.post(this.urlListGroups+'/'+group.id, group).then(function (response) {
+                    return response.data;
+                }).catch(function(error){
+                    return error.message;
+                });
+            },
+            deinscriptionGroupe : function($id_utilisateur,$id_groupe){
+               return $http({ method: 'DELETE', url: this.urlListGroups+'/'+$id_groupe, params: { id_user: $id_utilisateur } }).then(function (response) {
+                    return response.data;
+                }).catch(function(error){
+                    return error.message;
                 });
             }
         };

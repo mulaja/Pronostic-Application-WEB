@@ -103,7 +103,7 @@
                                     <tr>
                                         <td colspan="6" align="center">
                                             <md-input-container class="md-block">
-                                                <md-button class="md-raised" ng-click="calendarCtrl.savePrognosis(pronostic.data)">Enregistrer</md-button>
+                                                <md-button class="md-raised md-primary" ng-click="calendarCtrl.savePrognosis(pronostic.data)">Enregistrer</md-button>
                                             </md-input-container>
                                         </td>
                                     </tr>
@@ -117,13 +117,14 @@
             <md-tab label="Classement g&eacute;n&eacute;ral" ng-if="calendarCtrl.isConnected()">
                 <md-content class="md-padding">
                     <h1 class="md-display-2">Classement g&eacute;n&eacute;ral</h1>
-                    <table>
+                                     
+                     <table>
                         <tr>
                             <th><md-subheader>Rang</md-subheader></th>
                             <th><md-subheader>Pseudonyme</md-subheader></th>
-                            <th><md-subheader>Nb. de points</md-subheader></th>
-                            <th><md-subheader>Nb. de victoire</md-subheader></th>
-                            <th><md-subheader>Nb. de score</md-subheader></th>
+                            <th><md-subheader>Nombre de points</md-subheader></th>
+                            <th><md-subheader>Nombre de victoire</md-subheader></th>
+                            <th><md-subheader>Nombre de score</md-subheader></th>
                         </tr>
                         <tr ng-repeat="rang in calendarCtrl.rangs" ng-class-odd="'impair'" ng-class-even="'pair'" ng-class="calendarCtrl.isMySelf(rang.id) ? 'border' : ''">
                             <td align="center">{{rang.rang}}</td>
@@ -133,7 +134,76 @@
                             <td align="center">{{rang.scores}}</td>
                         </tr>
                     </table>
-                </md-content>
+                </md-content> 
+            </md-tab>
+                    
+            <md-tab ng-repeat="group in calendarCtrl.groups" label="Classement {{group.nom}}" ng-if="calendarCtrl.isConnected()">
+                <md-content class="md-padding">
+                    <h1 class="md-display-2">Classement {{group.nom}}</h1>
+                    
+                        <table>
+                            <tr>
+                                <th><md-subheader>Rang</md-subheader></th>
+                                <th><md-subheader>Pseudonyme</md-subheader></th>
+                                <th><md-subheader>Nombre de points</md-subheader></th>
+                                <th><md-subheader>Nombre de victoire</md-subheader></th>
+                                <th><md-subheader>Nombre de score</md-subheader></th>
+                            </tr>
+                            <tr ng-repeat="rang in group.classement" ng-class-odd="'impair'" ng-class-even="'pair'" ng-class="calendarCtrl.isMySelf(rang.id) ? 'border' : ''">
+                                <td align="center">{{rang.rang}}</td>
+                                <td align="center">{{rang.pseudonyme}}</td>
+                                <td align="center">{{rang.points}}</td>
+                                <td align="center">{{rang.winners}}</td>
+                                <td align="center">{{rang.scores}}</td>
+                            </tr>
+                        </table>
+                    
+                    <md-divider></md-divider>
+                     <section layout="row">
+                        <md-button ng-disabled="calendarCtrl.isAffichable(group.id)" ng-click="calendarCtrl.afficheListe(group.id)" class="md-raised md-primary">Ajouter utilisateurs</md-button>
+                        <md-button ng-click="calendarCtrl.deinscription(group.id)" class="md-raised md-primary">Se désinscrire</md-button>
+                      </section>
+                      
+                      <md-divider ng-show="calendarCtrl.isAffichable(group.id)"></md-divider>
+                      
+                       <form ng-show="calendarCtrl.isAffichable(group.id)" name="calendarCtrl.groupAjoutForm" class="css-form" novalidate>
+                                <md-list  ng-cloak>
+                                    <md-subheader class="md-no-sticky">Listes des utilisateurs</md-subheader>
+                                    <md-list-item class="liste" ng-repeat="user in calendarCtrl.users | filterGroup : group.classement">
+                                        <p> {{ user.pseudonyme }} ( {{ user.lastname }} {{ user.firstname }} ) </p>
+                                        <md-checkbox class="md-secondary" ng-model="user.check"></md-checkbox>
+                                    </md-list-item>
+                                </md-list>
+                                <div>
+                                    <md-input-container class="md-block">
+                                        <md-button ng-disabled="calendarCtrl.groupAjoutForm.$invalid" class="md-raised md-primary" ng-click="calendarCtrl.modifieGroupe(group.id)">Modifier le groupe</md-button>
+                                    </md-input-container>
+                                </div>
+                        </form>
+                    
+                </md-content> 
+            </md-tab>        
+                    
+            <md-tab label="Cr&eacute;e un groupe" ng-if="calendarCtrl.isConnected()">
+               <md-content class="md-padding">
+                   <div ng-class="calendarCtrl.class" ng-show="calendarCtrl.message" ng-bind="calendarCtrl.message"></div> 
+                   <form name="calendarCtrl.groupForm" class="css-form" novalidate>
+                        <md-list  ng-cloak>
+                            <md-subheader class="md-no-sticky">Nom du groupe</md-subheader>
+                            <input required ng-model="calendarCtrl.nomGroupe">
+                            <md-subheader class="md-no-sticky">Listes des utilisateurs</md-subheader>
+                            <md-list-item class="liste" ng-repeat="user in calendarCtrl.users">
+                                <p> {{ user.pseudonyme }} ( {{ user.lastname }} {{ user.firstname }} ) </p>
+                                <md-checkbox class="md-secondary" ng-model="user.check"></md-checkbox>
+                            </md-list-item>
+                        </md-list>
+                        <div>
+                            <md-input-container class="md-block">
+                                <md-button ng-disabled="calendarCtrl.groupForm.$invalid" class="md-raised md-primary" ng-click="calendarCtrl.ajoutGroupe()">Créer un groupe</md-button>
+                            </md-input-container>
+                         </div>
+                   </form>
+                </md-content> 
             </md-tab>
         </md-tabs>
 

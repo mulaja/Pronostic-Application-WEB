@@ -97,3 +97,8 @@ table {
 .border {
     background-color : green;
 }
+
+.list {
+    min-height: 10px !important;
+}
+
