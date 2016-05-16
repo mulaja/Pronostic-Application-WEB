@@ -2,8 +2,7 @@
 
 angular.module('module')
 .provider('userService', function () {
-    this.$get = function ($http, $rootScope) {
-        $rootScope.header = false;
+    this.$get = function ($http) {
         return {
             urlUsers: 'http://mulaja.esy.es/rest.php/Users',
             getListUsers: function () {

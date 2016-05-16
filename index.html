@@ -34,6 +34,7 @@
         <script src="services/authentificationService.js"></script>
         <script src="services/calendarService.js"></script>
         <script src="services/userService.js"></script>
+        <script src="services/indexService.js"></script>
         
         <script src="filters/filterGroup.js"></script>
         
@@ -61,13 +62,18 @@
                     </md-fab-actions>
 
                 </md-fab-speed-dial>
-                <img src="img/fond.jpg">
             </div>
         </md-content>
     </div>
 
     <!-- Vue -->
     <ng-view></ng-view>
+    
+    <footer>
+        <div layout="row" layout-align="center center">
+            <h2>Pronostic UEFA EURO 2016 - version {{indexCtrl.version}}</h2>
+        </div>
+    </footer>
 
 </body>
 </html>
