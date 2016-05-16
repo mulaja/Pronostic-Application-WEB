@@ -6,19 +6,19 @@
 
         <title ng-bind="title"></title>
 
-        <link rel="stylesheet" type="text/css" href="http://ajax.googleapis.com/ajax/libs/angular_material/1.1.0-rc2/angular-material.min.css">
+        <link rel="stylesheet" type="text/css" href="libs/angular-material/angular-material.css">
         <link rel="stylesheet" type="text/css" href="css/application.css">
 
         <!-- Angular Material requires Angular.js Libraries -->
-        <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.3/angular.min.js"></script>
-        <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.3/angular-animate.min.js"></script>
-        <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.3/angular-aria.min.js"></script>
-        <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.3/angular-messages.min.js"></script>
-        <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.3/angular-route.min.js"></script>
-        <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.3/angular-resource.min.js"></script>
+        <script src="libs/angular/angular.js"></script>
+        <script src="libs/angular-animate/angular-animate.js"></script>
+        <script src="libs/angular-aria/angular-aria.js"></script>
+        <script src="libs/angular-messages/angular-messages.js"></script>
+        <script src="libs/angular-route/angular-route.js"></script>
+        <script src="libs/angular-resource/angular-resource.js"></script>
 
         <!-- Angular Material Library -->
-        <script src="http://ajax.googleapis.com/ajax/libs/angular_material/1.1.0-rc2/angular-material.min.js"></script>
+        <script src="libs/angular-material/angular-material.js"></script>
 
         <!-- Biblioth�que MD5-->
         <script src="js/md5.js"></script>
@@ -34,6 +34,10 @@
         <script src="services/authentificationService.js"></script>
         <script src="services/calendarService.js"></script>
         <script src="services/userService.js"></script>
+        
+        <script src="filters/filterGroup.js"></script>
+        
+</style>
 
     </head>
 <body ng-controller="indexController as indexCtrl">
