@@ -11,7 +11,13 @@ angular.module('module')
             $location.url('/login');
         };
 
-        if (authentificationService.isConnected()) {
+         // Boolean pour determiner si l'utilisateur est connect�
+        indexCtrl.isConnected = function () {
+            return authentificationService.isConnected();
+        };
+
+        if (indexCtrl.isConnected()) {
+            indexCtrl.user = authentificationService.getUser();
             $location.url('/home');
         }
         

@@ -105,3 +105,15 @@ table {
 footer {
   background-color: #2645DC;
 }
+
+.avatar_selected {
+    border-color: green !important;
+    border-style: solid !important;
+}
+.avatar {
+    margin-top: 8px;
+    margin-bottom: 8px;
+    margin-right: 16px;
+    border-radius: 50%;
+    box-sizing: content-box;
+}

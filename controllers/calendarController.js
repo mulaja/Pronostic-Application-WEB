@@ -120,7 +120,7 @@ angular.module('module')
                             rang++;
                         }
 
-                        rangs.push({ rang: rang, id: classement[i].id, pseudonyme: classement[i].pseudonyme, points: classement[i].points, winners: classement[i].winners, scores: classement[i].scores });
+                        rangs.push({ rang: rang, id: classement[i].id, pseudonyme: classement[i].pseudonyme, points: classement[i].points, winners: classement[i].winners, scores: classement[i].scores, path : classement[i].path });
 
                         points = classement[i].points;
                         winners = classement[i].winners;
@@ -217,7 +217,7 @@ angular.module('module')
                     rang++;
                 }
 
-                calendarCtrl.rangs.push({ rang: rang, id: classement[i].id, pseudonyme: classement[i].pseudonyme, points: classement[i].points, winners: classement[i].winners, scores: classement[i].scores });
+                calendarCtrl.rangs.push({ rang: rang, id: classement[i].id, pseudonyme: classement[i].pseudonyme, points: classement[i].points, winners: classement[i].winners, scores: classement[i].scores, path : classement[i].path });
 
                 points = classement[i].points;
                 winners = classement[i].winners;

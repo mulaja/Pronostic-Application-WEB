@@ -22,9 +22,7 @@ angular.module('module')
 
                 })
                 .catch(function (message) {
-                    authentificationCtrl.error = message;
-
-
+                    authentificationCtrl.error = message.message;
                 });
             }
         };

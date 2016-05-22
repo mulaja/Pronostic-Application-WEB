@@ -8,6 +8,7 @@
 
         <link rel="stylesheet" type="text/css" href="libs/angular-material/angular-material.css">
         <link rel="stylesheet" type="text/css" href="css/application.css">
+        <link rel="stylesheet" type="text/css" href="libs/bootstrap/dist/css/bootstrap.css">
 
         <!-- Angular Material requires Angular.js Libraries -->
         <script src="libs/angular/angular.js"></script>
@@ -16,12 +17,16 @@
         <script src="libs/angular-messages/angular-messages.js"></script>
         <script src="libs/angular-route/angular-route.js"></script>
         <script src="libs/angular-resource/angular-resource.js"></script>
+        <script src="libs/angular-img-http-src/index.js"></script>
 
         <!-- Angular Material Library -->
         <script src="libs/angular-material/angular-material.js"></script>
 
         <!-- Biblioth�que MD5-->
         <script src="js/md5.js"></script>
+        
+        <!-- Utilitaire-->
+        <script src="js/util.js"></script>
 
         <!-- Module application-->
         <script src="modules/module.js"></script>
@@ -30,14 +35,16 @@
         <script src="controllers/calendarController.js"></script>
         <script src="controllers/userController.js"></script>
         <script src="controllers/indexController.js"></script>
+        <script src="controllers/profilController.js"></script>
 
         <script src="services/authentificationService.js"></script>
         <script src="services/calendarService.js"></script>
         <script src="services/userService.js"></script>
         <script src="services/indexService.js"></script>
+        <script src="services/profilService.js"></script>
         
         <script src="filters/filterGroup.js"></script>
-        
+             
 </style>
 
     </head>
@@ -47,21 +54,33 @@
 
     <div layout="column" ng-cloak class="header">
         <md-content class="md-padding" layout="column">
-            <div class="lock-size" layout="row" layout-align="center center">
+            <div class="lock-size" layout="row" layout-align="center center" style="width : 100%;">
+                
+                <div style="margin-left: 0px;">
+                    <md-card ng-show="indexCtrl.isConnected()">
+                        <md-card-content>
+                            <img ng-src="{{indexCtrl.user.path}}" class="avatar" height="42" width="42" >
+                            {{indexCtrl.user.pseudonyme}}
+                        </md-card-content>
+                    </md-card>
+                 </div>
+                
+                <div style="text-align: center;">
+                    <md-button href="/#home"  aria-label="Accueil" class="md-fab md-raised md-mini">
+                        <md-icon md-svg-src="img/icons/ic_home_black_24px.svg" aria-label="Accueil"></md-icon>
+                    </md-button>
+                    <md-button href="/#profil"  aria-label="Profil" class="md-fab md-raised md-mini" ng-show="indexCtrl.isConnected()">
+                        <md-icon md-svg-src="img/icons/ic_account_box_black_24px.svg" aria-label="Profil"></md-icon>
+                    </md-button>
+                    <md-button ng-click="indexCtrl.deconnexion()" aria-label="Login" class="md-fab md-raised md-mini">
+                        <md-icon md-svg-src="img/icons/ic_settings_power_black_24px.svg" aria-label="Login"></md-icon>
+                    </md-button>
+                 </div>
 
-                <md-fab-speed-dial md-open="true" md-direction="left" ng-class="md-scale">
+                 <div style="text-align: right;">
+                    <img src="img/fond.jpg">
+                 </div>
 
-
-                    <md-fab-actions>
-                        <md-button href="/#home"  aria-label="Accueil" class="md-fab md-raised md-mini">
-                            <md-icon md-svg-src="img/icons/ic_home_black_24px.svg" aria-label="Accueil"></md-icon>
-                        </md-button>
-                        <md-button ng-click="indexCtrl.deconnexion()" aria-label="Login" class="md-fab md-raised md-mini">
-                            <md-icon md-svg-src="img/icons/ic_settings_power_black_24px.svg" aria-label="Login"></md-icon>
-                        </md-button>
-                    </md-fab-actions>
-
-                </md-fab-speed-dial>
             </div>
         </md-content>
     </div>

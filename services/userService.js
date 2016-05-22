@@ -4,7 +4,7 @@ angular.module('module')
 .provider('userService', function () {
     this.$get = function ($http) {
         return {
-            urlUsers: 'http://mulaja.esy.es/rest.php/Users',
+            urlUsers: serverRest+'/Users',
             getListUsers: function () {
                 return $http.get(this.urlUsers).then(function (response) {
                     return response.data;

@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('module', ['ngRoute', 'ngMaterial', 'ngResource'])
+angular.module('module', ['ngRoute', 'ngMaterial', 'ngResource','angular.img'])
 
 .config(function ($routeProvider) {
     $routeProvider.when('/users', {
@@ -26,8 +26,13 @@ angular.module('module', ['ngRoute', 'ngMaterial', 'ngResource'])
         controller: 'calendarController',
         controllerAs: 'calendarCtrl'
     });
+    $routeProvider.when('/profil', {
+        templateUrl: '../views/profil.html',
+        controller: 'profilController',
+        controllerAs: 'profilCtrl'
+    });
 
     $routeProvider.otherwise({
-        redirectTo: '/login'
+        redirectTo: '/home'
     });
 });

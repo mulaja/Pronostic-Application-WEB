@@ -1,0 +1,50 @@
+<div class="container">
+    
+    <div ng-class="profilCtrl.class" ng-show="profilCtrl.message" ng-bind="profilCtrl.message"></div> 
+    
+    <form name="profilCtrl.form" class="css-form" novalidate>
+
+            <md-input-container class="md-icon-float md-block">
+                <!-- Use floating label instead of placeholder -->
+                <label>Nom</label>
+                <md-icon md-svg-src="../img/icons/ic_perm_identity_black_24px.svg" class="name"></md-icon>
+                <input ng-model="profilCtrl.profil.lastname" type="text" name="lastname" ng-required="true" />
+            </md-input-container>
+
+            <md-input-container class="md-icon-float md-block">
+                <!-- Use floating label instead of placeholder -->
+                <label>Pr&eacute;nom</label>
+                <md-icon md-svg-src="../img/icons/ic_perm_identity_black_24px.svg" class="name"></md-icon>
+                <input ng-model="profilCtrl.profil.firstname" type="text" name="firstname" ng-required="true" />
+            </md-input-container>
+
+            <md-input-container class="md-icon-float md-block">
+                <!-- Use floating label instead of placeholder -->
+                <label>Pseudonyme</label>
+                <md-icon md-svg-src="../img/icons/ic_perm_identity_black_24px.svg" class="name"></md-icon>
+                <input ng-model="profilCtrl.profil.pseudonyme" type="text" name="pseudonyme" ng-required="true" />
+            </md-input-container>
+
+            <md-input-container class="md-block">
+                <!-- Use floating placeholder instead of label -->
+                <md-icon md-svg-src="../img/icons/ic_email_black_24px.svg" class="email"></md-icon>
+                <input ng-model="profilCtrl.profil.email" type="email" placeholder="Email" ng-required="true" name="email" />
+            </md-input-container>
+
+    
+            <div class="row">
+                <div class="col-lg-3 col-md-4 col-xs-6 thumb" ng-repeat="avatar in profilCtrl.listAvatar">
+                    <a class="thumbnail" ng-class="profilCtrl.getClass(avatar.id_avatar)" ng-click="profilCtrl.selection(avatar.id_avatar)">
+                        <img class="img-responsive avatar" ng-src="{{avatar.path}}">
+                    </a>
+                </div>
+            </div>
+            
+            <div style="text-align: center;">
+                <md-input-container class="md-block">
+                    <md-button ng-disabled="profilCtrl.form.$invalid" class="md-raised md-primary" ng-click="profilCtrl.saveProfil()">Enregistrer</md-button>
+                </md-input-container>
+            </div>
+    
+    </form>
+</div>
