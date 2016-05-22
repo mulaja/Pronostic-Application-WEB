@@ -1,1 +1,1 @@
-var serverRest = 'http://localhost/rest.php';
+var serverRest = 'http://mulaja.esy.es/rest.php';
