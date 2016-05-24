@@ -4,30 +4,30 @@ angular.module('module', ['ngRoute', 'ngMaterial', 'ngResource','angular.img'])
 
 .config(function ($routeProvider) {
     $routeProvider.when('/users', {
-        templateUrl: '../views/userListView.html',
+        templateUrl: serverWEB+'/views/userListView.html',
         controller: 'userController',
         controllerAs: 'userCtrl'
     });
 
     $routeProvider.when('/login', {
-        templateUrl: '../views/login.html',
+        templateUrl: serverWEB+'/views/login.html',
         controller: 'authentificationController',
         controllerAs: 'authentificationCtrl'
     });
 
     $routeProvider.when('/create', {
-        templateUrl: '../views/creation_utilisateur.html',
+        templateUrl: serverWEB+'/views/creation_utilisateur.html',
         controller: 'userController',
         controllerAs: 'userCtrl'
     });
 
     $routeProvider.when('/home', {
-        templateUrl: '../views/match.html',
+        templateUrl: serverWEB+'/views/match.html',
         controller: 'calendarController',
         controllerAs: 'calendarCtrl'
     });
     $routeProvider.when('/profil', {
-        templateUrl: '../views/profil.html',
+        templateUrl: serverWEB+'/views/profil.html',
         controller: 'profilController',
         controllerAs: 'profilCtrl'
     });

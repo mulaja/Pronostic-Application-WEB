@@ -16,8 +16,10 @@
                                     </tr>
                                     <tr ng-repeat="match in fixture.data">
                                         <td class="horaire">{{match.date.substring(match.date.indexOf('T') +1,match.date.length-1)}}</td>
-                                        <td class="equipe">
+                                        <td class="drapeau">
                                              <img ng-src="{{match.homeTeamHref}}" height="30" width="30">
+										</td>
+										<td class="equipe">
                                             {{match.homeTeamName}}
                                         </td>
                                         <td class="score"> {{match.result.goalsHomeTeam}}</td>
@@ -25,6 +27,8 @@
                                         <td class="score">{{match.result.goalsAwayTeam}}</td>
                                         <td class="equipe">
                                             {{match.awayTeamName}}
+										</td>
+										<td class="drapeau">
                                             <img ng-src="{{match.awayTeamHref}}" height="30" width="30">
                                         </td>
                                     </tr>
@@ -100,20 +104,24 @@
                                     </tr>
                                     <tr ng-repeat="match in pronostic.data">
                                         <td class="horaire">{{match.date.substring(match.date.indexOf('T') +1,match.date.length-1)}}</td>
-                                        <td class="equipe">
+                                        <td class="drapeau">
                                             <img ng-src="{{match.homeTeamHref}}" height="30" width="30">
+										</td>
+										<td class="equipe">
                                             {{match.homeTeamName}}
-                                            </td>
-                                        <td class="score"><input type="text" ng-model="match.goalsHomeTeam" maxlength="2" size="2" ng-disabled="match.available == 'N' ? true : false" /></tdclass>
+                                        </td>
+                                        <td class="score"><input type="text" ng-model="match.goalsHomeTeam" maxlength="2" size="2" ng-disabled="match.available == 'N' ? true : false" /></td>
                                         <td class="separation">-</td>
                                         <td class="score"><input type="text" ng-model="match.goalsAwayTeam" maxlength="2" size="2" ng-disabled="match.available == 'N' ? true : false" /></td>  
                                         <td class="equipe">
                                             {{match.awayTeamName}}
+										</td>
+										<td class="drapeau">
                                             <img ng-src="{{match.awayTeamHref}}" height="30" width="30">
-                                            </td>
+                                        </td>
                                     </tr>
                                     <tr>
-                                        <td colspan="6" align="center">
+                                        <td colspan="8" align="center">
                                             <md-input-container class="md-block">
                                                 <md-button class="md-raised md-primary" ng-click="calendarCtrl.savePrognosis(pronostic.data)">Enregistrer</md-button>
                                             </md-input-container>

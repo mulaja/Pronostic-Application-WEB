@@ -72,13 +72,13 @@ table {
 }
 
 .horaire {
-    width: 25%;
+    width: 20%;
     text-align :center;
     font-family : 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 
 .equipe {
-    width: 30%;
+    width: 26%;
     text-align :center;
     font-family : 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 
@@ -90,6 +90,11 @@ table {
 }
 
 .separation {
+    width: 5%;
+    text-align :center;
+}
+
+.drapeau {
     width: 5%;
     text-align :center;
 }

@@ -10,6 +10,14 @@ angular.module('module')
             authentificationService.setUser(null);
             $location.url('/login');
         };
+        
+        indexCtrl.acceuil = function () {
+            $location.url('/home');
+        };
+        
+        indexCtrl.profil = function () {
+            $location.url('/profil');
+        };
 
          // Boolean pour determiner si l'utilisateur est connect�
         indexCtrl.isConnected = function () {
