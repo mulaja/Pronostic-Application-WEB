@@ -1,7 +1,11 @@
 <md-content>
     <div ng-cloak>
 
-        <md-tabs md-dynamic-height md-border-bottom>
+        <div style="text-align : center;">
+            <img src="img/loading.gif" ng-show="calendarCtrl.loading"/>
+        </div>
+
+        <md-tabs md-dynamic-height md-border-bottom ng-show="!calendarCtrl.loading">
             <md-tab label="Calendrier">
                 <md-content class="md-padding">
                     <h1 class="md-display-2">Calendrier</h1>

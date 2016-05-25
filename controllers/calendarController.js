@@ -4,6 +4,9 @@ angular.module('module')
 .controller('calendarController', ['calendarService', 'authentificationService', function (calendarService, authentificationService) {
 
     var calendarCtrl = this;
+    
+    // Chargement en cours
+    calendarCtrl.loading = true;
 
     // Boolean pour determiner si l'utilisateur est connect�
     calendarCtrl.isConnected = function () {
@@ -150,11 +153,6 @@ angular.module('module')
       return calendarCtrl.affiche[id];
     };
 
-    // On r�cup�re la liste des matchs
-    calendarService.getListFixtures().then(function (fixtures) {
-        calendarCtrl.fixtures = fixtures;
-    });
-
     calendarCtrl.isMySelf = function (id) {
         return authentificationService.getUser().id == id;
     };
@@ -198,51 +196,74 @@ angular.module('module')
         return rangs;
     };
 
+    // On r�cup�re la liste des utilisateurs
+    calendarCtrl.getListeUtilisateur = function(){
+        if (calendarCtrl.isConnected()) {
+            calendarService.getUsers().then(function (users) {
+                calendarCtrl.users = users;
+                
+                    // Mise à jour des groupes
+                    calendarCtrl.majListeGroupes();
+                    
+                    calendarCtrl.loading = false;
+                
+            });
+        }
+    }
+
     // On r�cup�re le classement
-    if (calendarCtrl.isConnected()) {
+    calendarCtrl.getClassement = function(){
+        
+        if (calendarCtrl.isConnected()) {
 
-        calendarCtrl.rangs = [];
-        calendarService.getRangs().then(function (rangs) {
-            var classement = calendarCtrl.tri(rangs, calendarCtrl.compare);
+            calendarCtrl.rangs = [];
+            calendarService.getRangs().then(function (rangs) {
+                var classement = calendarCtrl.tri(rangs, calendarCtrl.compare);
 
-            // On ajoute le rang
-            var rang = 1;
-            var points = classement[0].points;
-            var winners = classement[0].winners;
-            var scores = classement[0].scores;
+                    // On ajoute le rang
+                    var rang = 1;
+                    var points = classement[0].points;
+                    var winners = classement[0].winners;
+                    var scores = classement[0].scores;
 
-            for (var i = 0; i < classement.length; i++) {
+                    for (var i = 0; i < classement.length; i++) {
 
-                if (classement[i].points < points || classement[i].winners < winners || classement[i].scores < scores) {
-                    rang++;
-                }
+                        if (classement[i].points < points || classement[i].winners < winners || classement[i].scores < scores) {
+                            rang++;
+                        }
 
-                calendarCtrl.rangs.push({ rang: rang, id: classement[i].id, pseudonyme: classement[i].pseudonyme, points: classement[i].points, winners: classement[i].winners, scores: classement[i].scores, path : classement[i].path });
+                        calendarCtrl.rangs.push({ rang: rang, id: classement[i].id, pseudonyme: classement[i].pseudonyme, points: classement[i].points, winners: classement[i].winners, scores: classement[i].scores, path : classement[i].path });
 
-                points = classement[i].points;
-                winners = classement[i].winners;
-                scores = classement[i].scores;
+                        points = classement[i].points;
+                        winners = classement[i].winners;
+                        scores = classement[i].scores;
 
-            }
+                    }
+                    
+                    calendarCtrl.getListeUtilisateur();
 
-        });
+            });
+        }
     }
 
     // On r�cup�re les pronostics
-    if (calendarCtrl.isConnected()) {
-        calendarService.getListPronostics(authentificationService.getUser().id).then(function (pronostics) {
-            calendarCtrl.pronostics = pronostics;
-        });
+    calendarCtrl.getPronostic = function(){
+        if (calendarCtrl.isConnected()) {
+            calendarService.getListPronostics(authentificationService.getUser().id).then(function (pronostics) {
+                calendarCtrl.pronostics = pronostics;
+                
+                calendarCtrl.getClassement();
+                
+            });
+        }
     }
     
-    // On r�cup�re la liste des utilisateurs
-    if (calendarCtrl.isConnected()) {
-        calendarService.getUsers().then(function (users) {
-            calendarCtrl.users = users;
-        });
-    }
-    
-    // Mise à jour des groupes
-    calendarCtrl.majListeGroupes();
+     // On r�cup�re la liste des matchs
+    calendarService.getListFixtures().then(function (fixtures) {
+        calendarCtrl.fixtures = fixtures;
+        
+        calendarCtrl.getPronostic();
+        
+    });
     
 }]);
