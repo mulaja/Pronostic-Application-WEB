@@ -19,6 +19,16 @@ angular.module('module')
             $location.url('/profil');
         };
 
+        indexCtrl.getUserPath = function(){
+            var user = authentificationService.getUser();
+            return user.path;
+        };
+        
+        indexCtrl.getUserPseudonyme = function(){
+            var user = authentificationService.getUser();
+            return user.pseudonyme;
+        };
+
          // Boolean pour determiner si l'utilisateur est connect�
         indexCtrl.isConnected = function () {
             return authentificationService.isConnected();

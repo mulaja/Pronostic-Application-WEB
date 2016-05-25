@@ -59,8 +59,8 @@
                 <div style="margin-left: 0px;">
                     <md-card ng-show="indexCtrl.isConnected()">
                         <md-card-content>
-                            <img ng-src="{{indexCtrl.user.path}}" class="avatar" height="42" width="42" >
-                            {{indexCtrl.user.pseudonyme}}
+                            <img ng-src="{{indexCtrl.getUserPath()}}" class="avatar" height="42" width="42" >
+                            {{indexCtrl.getUserPseudonyme()}}
                         </md-card-content>
                     </md-card>
                  </div>
