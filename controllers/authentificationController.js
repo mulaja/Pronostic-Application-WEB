@@ -21,8 +21,8 @@ angular.module('module')
                     $location.url('/home');
 
                 })
-                .catch(function (message) {
-                    authentificationCtrl.error = message.message;
+                .catch(function (error) {
+                    authentificationCtrl.error = error.data.message;
                 });
             }
         };

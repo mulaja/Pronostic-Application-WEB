@@ -57,7 +57,7 @@
             <div class="lock-size" layout="row" layout-align="center center" style="width : 100%;">
                 
                 <div style="margin-left: 0px;">
-                    <md-card ng-show="indexCtrl.isConnected()">
+                    <md-card ng-if="indexCtrl.isConnected()">
                         <md-card-content>
                             <img ng-src="{{indexCtrl.getUserPath()}}" class="avatar" height="42" width="42" >
                             {{indexCtrl.getUserPseudonyme()}}
