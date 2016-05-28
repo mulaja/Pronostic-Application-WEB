@@ -42,56 +42,7 @@
                     </md-content>
             </md-tab>
 
-            <md-tab label="Reglement">
-                <md-content class="md-padding">
-                    <h1 class="md-display-2">Reglement</h1>
-
-                    <md-content class="md-padding">
-                        <div>
-
-                            <h4 class="titre">La grille de points</h4>
-                            <ul>
-                                <li>Le score exact (&laquo; perfect &raquo;) rapporte 3 points</li>
-                                <li>Le bon vainqueur rapporte 1 point (ex : prono : 5-0 et score r&eacute;el : 2-1)</li>
-                                <li>Autre cas = 0 point</li>
-                            </ul>
-
-                            <br />
-
-                            <h4 class="titre">Conditions de validit&eacute; des pronostics</h4>
-                            <ul>
-                                <li class="texte">
-                                    Pour que vos pronostics soient homologu&eacute;s, ils doivent &ecirc;tre effectu&eacute;s AVANT le d&eacute;but du match.
-                                    Tout pronostic effectu&eacute; apr&egrave;s le coup d'envoi d'un match ne sera pas valid&eacute;.
-                                    Vos pronostics sont &agrave; effectuer dans la rubrique &laquo; pronostic &raquo; &agrave; laquelle vous acc&eacute;dez depuis le menu.
-                                    Vous devez cependant &ecirc;tre connect&eacute; pour acc&eacute;der aux grilles de pronostics
-                                </li>
-                                <li class="texte">
-                                    Si une personne pronostique alors que certains matchs de la journ&eacute;e ont commenc&eacute;,
-                                    seuls les pronostics de matchs non-d&eacute;but&eacute;s sont pris en compte.
-                                </li>
-                                <li class="texte">
-                                    Une contestation excessive et des injures sont passibles de p&eacute;nalit&eacute;s, voire d'exclusion de la comp&eacute;tition.
-                                </li>
-                                <li class="texte">
-                                    Il est strictement interdit de copier ou de s'inspirer de ses adversaires quelle que soit la comp&eacute;tition.
-                                    En cas de fraude, l'Equipe Dirigeante jugera s'il y a eu copiage ou non.
-                                </li>
-                                <li class="texte">
-                                    L'Equipe Dirigeante (ED) peut &agrave; tout moment apporter des avenants au pr&eacute;sent r&egrave;glement pour les lacunes observ&eacute;es ult&eacute;rieurement &agrave; sa publication.
-                                </li>
-                                <li class="texte">
-                                    Tout pronostiqueur se doit de v&eacute;rifier la date et l'heure des matchs mise en ligne par un membre de l'Equipe Dirigeante (ED).
-                                </li>
-                                <li class="texte">
-                                    Ne pas oublier que tout ceci est un jeu o&ugrave; l'ambiance, le chambrage et la bonne humeur sont au rendez-vous.
-                                    Evidemment, chaque comp&eacute;titeur ou comp&eacute;titrice est motiv&eacute;(e) pour faire de son mieux. Il n'y a pas d'argent &agrave; gagner.
-                                    Ce qu'il y a &agrave; gagner, c'est le respect &eacute;ternel de ses adversaires pour celui ou celle qui atteint la marche supr&ecirc;me de notre comp&eacute;tition.
-                                </li>
-                            </ul>
-                        </div>
-                    </md-content>
-            </md-tab>
+           
 
             <md-tab label="Pronostic" ng-if="calendarCtrl.isConnected()">         
                 <md-content class=" md-padding">
@@ -233,6 +184,58 @@
                    </form>
                 </md-content> 
             </md-tab>
+                       
+             <md-tab label="Reglement">
+                <md-content class="md-padding">
+                    <h1 class="md-display-2">Reglement</h1>
+
+                    <md-content class="md-padding">
+                        <div>
+
+                            <h4 class="titre">La grille de points</h4>
+                            <ul>
+                                <li>Le score exact (&laquo; perfect &raquo;) rapporte 3 points</li>
+                                <li>Le bon vainqueur rapporte 1 point (ex : prono : 5-0 et score r&eacute;el : 2-1)</li>
+                                <li>Autre cas = 0 point</li>
+                            </ul>
+
+                            <br />
+
+                            <h4 class="titre">Conditions de validit&eacute; des pronostics</h4>
+                            <ul>
+                                <li class="texte">
+                                    Pour que vos pronostics soient homologu&eacute;s, ils doivent &ecirc;tre effectu&eacute;s AVANT le d&eacute;but du match.
+                                    Tout pronostic effectu&eacute; apr&egrave;s le coup d'envoi d'un match ne sera pas valid&eacute;.
+                                    Vos pronostics sont &agrave; effectuer dans la rubrique &laquo; pronostic &raquo; &agrave; laquelle vous acc&eacute;dez depuis le menu.
+                                    Vous devez cependant &ecirc;tre connect&eacute; pour acc&eacute;der aux grilles de pronostics
+                                </li>
+                                <li class="texte">
+                                    Si une personne pronostique alors que certains matchs de la journ&eacute;e ont commenc&eacute;,
+                                    seuls les pronostics de matchs non-d&eacute;but&eacute;s sont pris en compte.
+                                </li>
+                                <li class="texte">
+                                    Une contestation excessive et des injures sont passibles de p&eacute;nalit&eacute;s, voire d'exclusion de la comp&eacute;tition.
+                                </li>
+                                <li class="texte">
+                                    Il est strictement interdit de copier ou de s'inspirer de ses adversaires quelle que soit la comp&eacute;tition.
+                                    En cas de fraude, l'Equipe Dirigeante jugera s'il y a eu copiage ou non.
+                                </li>
+                                <li class="texte">
+                                    L'Equipe Dirigeante (ED) peut &agrave; tout moment apporter des avenants au pr&eacute;sent r&egrave;glement pour les lacunes observ&eacute;es ult&eacute;rieurement &agrave; sa publication.
+                                </li>
+                                <li class="texte">
+                                    Tout pronostiqueur se doit de v&eacute;rifier la date et l'heure des matchs mise en ligne par un membre de l'Equipe Dirigeante (ED).
+                                </li>
+                                <li class="texte">
+                                    Ne pas oublier que tout ceci est un jeu o&ugrave; l'ambiance, le chambrage et la bonne humeur sont au rendez-vous.
+                                    Evidemment, chaque comp&eacute;titeur ou comp&eacute;titrice est motiv&eacute;(e) pour faire de son mieux. Il n'y a pas d'argent &agrave; gagner.
+                                    Ce qu'il y a &agrave; gagner, c'est le respect &eacute;ternel de ses adversaires pour celui ou celle qui atteint la marche supr&ecirc;me de notre comp&eacute;tition.
+                                </li>
+                            </ul>
+                        </div>
+                    </md-content>
+            </md-tab>
+            
         </md-tabs>
 
     </div>
