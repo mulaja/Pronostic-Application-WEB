@@ -255,6 +255,8 @@ angular.module('module')
                 calendarCtrl.getClassement();
                 
             });
+        }else{
+            calendarCtrl.loading = false;
         }
     }
     

@@ -8,7 +8,9 @@
 
                 <md-input-container class="md-icon-float md-block">
                     <label>Login</label>
-                    <md-icon md-svg-src="../img/icons/ic_perm_identity_black_24px.svg" class="name"></md-icon>
+                    <md-icon>
+                        <img class="png-icon" src="img/icons/identity.png" style="width: 24px; height: 24px;">
+                    </md-icon>
                     <input required name="login" ng-model="authentificationCtrl.user.pseudonyme">
 
                     <div ng-messages="authentificationCtrl.loginForm.login.$error">
@@ -18,7 +20,9 @@
 
                 <md-input-container class="md-icon-float md-block">
                     <label>Mot de passe</label>
-                    <md-icon md-svg-src="../img/icons/ic_perm_identity_black_24px.svg" class="name"></md-icon>
+                    <md-icon>
+                        <img class="png-icon" src="img/icons/password.png" style="width: 24px; height: 24px;">
+                    </md-icon>
                     <input required name="password" ng-model="authentificationCtrl.user.password" type="password">
 
                     <div ng-messages="authentificationCtrl.loginForm.password.$error">
@@ -28,12 +32,12 @@
 
             </div>
 
-            <div>
+            <div style="text-align : center;">
                 <md-input-container class="md-block">
-                    <md-button ng-disabled="authentificationCtrl.loginForm.$invalid" class="md-raised bouton" ng-click="authentificationCtrl.submitLogin()">Login</md-button>
+                    <md-button ng-disabled="authentificationCtrl.loginForm.$invalid" class="md-raised md-primary bouton" ng-click="authentificationCtrl.submitLogin()">Login</md-button>
                 </md-input-container>
                 <md-input-container class="md-block">
-                    <md-button class="md-raised md-primary" ng-click="authentificationCtrl.inscription()">Inscription</md-button>
+                    <md-button class="md-raised md-primary bouton" ng-click="authentificationCtrl.inscription()">Inscription</md-button>
                 </md-input-container>
             </div>
 

@@ -6,9 +6,9 @@
         </div>
 
         <md-tabs md-dynamic-height md-border-bottom ng-show="!calendarCtrl.loading">
-            <md-tab label="Calendrier">
+            <md-tab label="R&eacute;sultats">
                 <md-content class="md-padding">
-                    <h1 class="md-display-2">Calendrier</h1>
+                    <h1 class="md-display-2">R&eacute;sultats</h1>
 
                     <md-content class="md-padding">
                         <md-list>
@@ -44,11 +44,11 @@
 
            
 
-            <md-tab label="Pronostic" ng-if="calendarCtrl.isConnected()">         
+            <md-tab label="Pronostics" ng-if="calendarCtrl.isConnected()">         
                 <md-content class=" md-padding">
                     <div ng-class="calendarCtrl.class" ng-show="calendarCtrl.message" ng-bind="calendarCtrl.message"></div> 
          
-                    <h1 class="md-display-2">Pronostic</h1>
+                    <h1 class="md-display-2">Pronostics</h1>
                     <md-content class="md-padding">
                         <md-list>
                             <md-list-item class="md-2-line" ng-repeat="pronostic in calendarCtrl.pronostics | orderBy: date">
@@ -65,9 +65,9 @@
 										<td class="equipe">
                                             {{match.homeTeamName}}
                                         </td>
-                                        <td class="score"><input type="text" ng-model="match.goalsHomeTeam" maxlength="2" size="2" ng-disabled="match.available == 'N' ? true : false" /></td>
+                                        <td class="score"><input type="text" ng-model="match.goalsHomeTeam" maxlength="2" style="width : 25px;" ng-disabled="match.available == 'N' ? true : false" /></td>
                                         <td class="separation">-</td>
-                                        <td class="score"><input type="text" ng-model="match.goalsAwayTeam" maxlength="2" size="2" ng-disabled="match.available == 'N' ? true : false" /></td>  
+                                        <td class="score"><input type="text" ng-model="match.goalsAwayTeam" maxlength="2" style="width : 25px;" ng-disabled="match.available == 'N' ? true : false" /></td>  
                                         <td class="equipe">
                                             {{match.awayTeamName}}
 										</td>
@@ -163,12 +163,12 @@
                 </md-content> 
             </md-tab>        
                     
-            <md-tab label="Cr&eacute;e un groupe" ng-if="calendarCtrl.isConnected()">
+            <md-tab label="Cr&eacute;e un mini championnat" ng-if="calendarCtrl.isConnected()">
                <md-content class="md-padding">
                    <div ng-class="calendarCtrl.class" ng-show="calendarCtrl.message" ng-bind="calendarCtrl.message"></div> 
                    <form name="calendarCtrl.groupForm" class="css-form" novalidate>
                         <md-list  ng-cloak>
-                            <md-subheader class="md-no-sticky">Nom du groupe</md-subheader>
+                            <md-subheader class="md-no-sticky">Nom du mini championnat</md-subheader>
                             <input required ng-model="calendarCtrl.nomGroupe">
                             <md-subheader class="md-no-sticky">Listes des utilisateurs</md-subheader>
                             <md-list-item class="liste" ng-repeat="user in calendarCtrl.users">

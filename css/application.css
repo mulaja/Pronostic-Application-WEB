@@ -107,10 +107,15 @@ table {
     min-height: 10px !important;
 }
 
-footer {
-  background-color: #2645DC;
+.footer {
+  background-color: rgba(15, 27, 86,0.1);
+  font-size: 12px;
 }
 
+.header {
+  width: 100%;
+  text-align: center;
+}
 .avatar_selected {
     border-color: green !important;
     border-style: solid !important;
@@ -121,4 +126,10 @@ footer {
     margin-right: 16px;
     border-radius: 50%;
     box-sizing: content-box;
+}
+.bouton {
+   width: 115px; 
+}
+@media only screen and (max-width: 479px) {
+   .mobile-hide{ display: none  !important; }
 }

@@ -56,7 +56,7 @@
         <md-content class="md-padding" layout="column">
             <div class="lock-size" layout="row" layout-align="center center" style="width : 100%;">
                 
-                <div style="margin-left: 0px;">
+                <div style="margin-left: 0px;" class="mobile-hide">
                     <md-card ng-if="indexCtrl.isConnected()">
                         <md-card-content>
                             <img ng-src="{{indexCtrl.getUserPath()}}" class="avatar" height="42" width="42" >
@@ -65,20 +65,22 @@
                     </md-card>
                  </div>
                 
-                <div style="text-align: center;">
-                    <md-button ng-click="indexCtrl.acceuil()" aria-label="Accueil" class="md-fab md-raised md-mini">
-                        <md-icon md-svg-src="img/icons/ic_home_black_24px.svg" aria-label="Accueil"></md-icon>
-                    </md-button>
-                    <md-button ng-click="indexCtrl.profil()"  aria-label="Profil" class="md-fab md-raised md-mini" ng-show="indexCtrl.isConnected()">
-                        <md-icon md-svg-src="img/icons/ic_account_box_black_24px.svg" aria-label="Profil"></md-icon>
-                    </md-button>
-                    <md-button ng-click="indexCtrl.deconnexion()" aria-label="Login" class="md-fab md-raised md-mini">
-                        <md-icon md-svg-src="img/icons/ic_settings_power_black_24px.svg" aria-label="Login"></md-icon>
-                    </md-button>
-                 </div>
+                <div class="header">
+                    <div style="text-align: center;">
+                        <md-button ng-click="indexCtrl.acceuil()" aria-label="Accueil" class="md-fab md-raised md-mini">
+                            <md-icon md-svg-src="img/icons/ic_home_black_24px.svg" aria-label="Accueil"></md-icon>
+                        </md-button>
+                        <md-button ng-click="indexCtrl.profil()"  aria-label="Profil" class="md-fab md-raised md-mini" ng-show="indexCtrl.isConnected()">
+                            <md-icon md-svg-src="img/icons/ic_account_box_black_24px.svg" aria-label="Profil"></md-icon>
+                        </md-button>
+                        <md-button ng-click="indexCtrl.deconnexion()" aria-label="Login" class="md-fab md-raised md-mini">
+                            <md-icon md-svg-src="img/icons/ic_settings_power_black_24px.svg" aria-label="Login"></md-icon>
+                        </md-button>
+                    </div>
 
-                 <div style="text-align: right;">
-                    <img src="img/fond.jpg">
+                    <div style="text-align: center;">
+                        <img src="img/fond.jpg">
+                    </div>
                  </div>
 
             </div>
@@ -89,8 +91,8 @@
     <ng-view></ng-view>
     
     <footer>
-        <div layout="row" layout-align="center center">
-            <h2>Pronostic UEFA EURO 2016 - version {{indexCtrl.version}}</h2>
+        <div layout="row" layout-align="center center" class="footer">
+            Pronostic UEFA EURO 2016 - version {{indexCtrl.version}}
         </div>
     </footer>
 
