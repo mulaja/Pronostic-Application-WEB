@@ -116,10 +116,12 @@ table {
   width: 100%;
   text-align: center;
 }
+
 .avatar_selected {
     border-color: green !important;
     border-style: solid !important;
 }
+
 .avatar {
     margin-top: 8px;
     margin-bottom: 8px;
@@ -127,9 +129,19 @@ table {
     border-radius: 50%;
     box-sizing: content-box;
 }
+
 .bouton {
    width: 115px; 
 }
+
 @media only screen and (max-width: 479px) {
    .mobile-hide{ display: none  !important; }
+}
+
+.resultat {
+    height: 170px !important;
+}
+
+.pronostic {
+    height: 240px !important;
 }

@@ -1,33 +1,44 @@
 <div class="container">
     
-    <div ng-class="profilCtrl.class" ng-show="profilCtrl.message" ng-bind="profilCtrl.message"></div> 
+    <div ng-class="profilCtrl.class" ng-show="profilCtrl.message">
+        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+        {{profilCtrl.message}}
+    </div> 
     
     <form name="profilCtrl.form" class="css-form" novalidate>
 
             <md-input-container class="md-icon-float md-block">
                 <!-- Use floating label instead of placeholder -->
                 <label>Nom</label>
-                <md-icon md-svg-src="../img/icons/ic_perm_identity_black_24px.svg" class="name"></md-icon>
+                <md-icon>
+                        <img class="png-icon" src="img/icons/identity.png" style="width: 24px; height: 24px;">
+                </md-icon>
                 <input ng-model="profilCtrl.profil.lastname" type="text" name="lastname" ng-required="true" />
             </md-input-container>
 
             <md-input-container class="md-icon-float md-block">
                 <!-- Use floating label instead of placeholder -->
                 <label>Pr&eacute;nom</label>
-                <md-icon md-svg-src="../img/icons/ic_perm_identity_black_24px.svg" class="name"></md-icon>
+                <md-icon>
+                        <img class="png-icon" src="img/icons/identity.png" style="width: 24px; height: 24px;">
+                </md-icon>
                 <input ng-model="profilCtrl.profil.firstname" type="text" name="firstname" ng-required="true" />
             </md-input-container>
 
             <md-input-container class="md-icon-float md-block">
                 <!-- Use floating label instead of placeholder -->
                 <label>Pseudonyme</label>
-                <md-icon md-svg-src="../img/icons/ic_perm_identity_black_24px.svg" class="name"></md-icon>
+                <md-icon>
+                        <img class="png-icon" src="img/icons/identity.png" style="width: 24px; height: 24px;">
+                </md-icon>
                 <input ng-model="profilCtrl.profil.pseudonyme" type="text" name="pseudonyme" ng-required="true" />
             </md-input-container>
 
             <md-input-container class="md-block">
                 <!-- Use floating placeholder instead of label -->
-                <md-icon md-svg-src="../img/icons/ic_email_black_24px.svg" class="email"></md-icon>
+                <md-icon>
+                        <img class="png-icon" src="img/icons/email.png" style="width: 24px; height: 24px;">
+                </md-icon>
                 <input ng-model="profilCtrl.profil.email" type="email" placeholder="Email" ng-required="true" name="email" />
             </md-input-container>
 

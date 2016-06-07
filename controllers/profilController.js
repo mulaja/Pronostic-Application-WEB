@@ -29,11 +29,11 @@ angular.module('module')
     
     profilCtrl.saveProfil = function(){
         profilService.saveProfil(authentificationService.getUser().id, profilCtrl.profil).then(function(user){
-            profilCtrl.class = "success";
+            profilCtrl.class = "alert alert-success fade in";
             profilCtrl.message = "Les modifications ont été prise en compte";
             authentificationService.setUser(user);
         }).catch(function(response){
-            profilCtrl.class = "warning";
+            profilCtrl.class = "alert alert-warning fade in";
             profilCtrl.message = response.data.message;
         });
     }

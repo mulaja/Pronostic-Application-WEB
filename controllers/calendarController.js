@@ -27,7 +27,7 @@ angular.module('module')
         if (pronostics.length > 0) {
             calendarService.savePrognosis({ id_user: authentificationService.getUser().id, pronostics: pronostics }).then(function (message) {
 
-                message.unchange > 0 ? calendarCtrl.class = "warning" : calendarCtrl.class = "success";
+                message.unchange > 0 ? calendarCtrl.class = "alert alert-warning fade in" : calendarCtrl.class = "alert alert-success fade in";
 
                 calendarCtrl.message = message.change + " modification";
                 if (message.change > 1) {
@@ -43,7 +43,7 @@ angular.module('module')
                 }
 
             }).catch(function (message) {
-                calendarCtrl.class = "warning";
+                calendarCtrl.class = "alert alert-warning fade in";
                 calendarCtrl.message = message;
             });
         }
@@ -65,6 +65,7 @@ angular.module('module')
         calendarService.modifyGroup(groupe).then(function (groupes) {
             calendarCtrl.majListeGroupes();
         }).catch(function(message){
+            calendarCtrl.class = "alert alert-warning fade in";
             calendarCtrl.message = message;
         });
         
@@ -86,6 +87,7 @@ angular.module('module')
         calendarService.addGroup(groupe).then(function (groupes) {
             calendarCtrl.majListeGroupes();
         }).catch(function(message){
+            calendarCtrl.class = "alert alert-warning fade in";
             calendarCtrl.message = message;
         });
         
@@ -96,6 +98,7 @@ angular.module('module')
         calendarService.deinscriptionGroupe(authentificationService.getUser().id,$id_groupe).then(function(response){
             calendarCtrl.majListeGroupes();
         }).catch(function(message){
+            calendarCtrl.class = "alert alert-warning fade in";
             calendarCtrl.message = message;
         });
     };

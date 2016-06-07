@@ -12,7 +12,7 @@
 
                     <md-content class="md-padding">
                         <md-list>
-                            <md-list-item class="md-2-line" ng-repeat="fixture in calendarCtrl.fixtures | orderBy: date">
+                            <md-list-item class="md-2-line resultat" ng-repeat="fixture in calendarCtrl.fixtures | orderBy: date">
                                 
                                 <table>
                                     <tr>
@@ -46,12 +46,17 @@
 
             <md-tab label="Pronostics" ng-if="calendarCtrl.isConnected()">         
                 <md-content class=" md-padding">
-                    <div ng-class="calendarCtrl.class" ng-show="calendarCtrl.message" ng-bind="calendarCtrl.message"></div> 
+                    <div class="container">
+                        <div ng-class="calendarCtrl.class" ng-show="calendarCtrl.message">
+                            <a class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                            {{calendarCtrl.message}}
+                        </div>
+                    </div> 
          
                     <h1 class="md-display-2">Pronostics</h1>
                     <md-content class="md-padding">
                         <md-list>
-                            <md-list-item class="md-2-line" ng-repeat="pronostic in calendarCtrl.pronostics | orderBy: date">
+                            <md-list-item class="md-2-line pronostic" ng-repeat="pronostic in calendarCtrl.pronostics | orderBy: date">
 
                                 <table>
                                     <tr>
@@ -165,7 +170,13 @@
                     
             <md-tab label="Cr&eacute;e un mini championnat" ng-if="calendarCtrl.isConnected()">
                <md-content class="md-padding">
-                   <div ng-class="calendarCtrl.class" ng-show="calendarCtrl.message" ng-bind="calendarCtrl.message"></div> 
+                   <div class="container">
+                        <div ng-class="calendarCtrl.class" ng-show="calendarCtrl.message">
+                                <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                                {{calendarCtrl.message}}
+                        </div>
+                   </div>
+                    
                    <form name="calendarCtrl.groupForm" class="css-form" novalidate>
                         <md-list  ng-cloak>
                             <md-subheader class="md-no-sticky">Nom du mini championnat</md-subheader>
