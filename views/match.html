@@ -12,7 +12,7 @@
 
                     <md-content class="md-padding">
                         <md-list>
-                            <md-list-item class="md-2-line resultat" ng-repeat="fixture in calendarCtrl.fixtures | orderBy: date">
+                            <md-list-item class="md-2-line resultat" ng-repeat="fixture in calendarCtrl.fixtures | orderBy: 'fixture.date'">
                                 
                                 <table>
                                     <tr>
@@ -48,7 +48,6 @@
                 <md-content class=" md-padding">
                     <div class="container">
                         <div ng-class="calendarCtrl.class" ng-show="calendarCtrl.message">
-                            <a class="close" data-dismiss="alert" aria-label="close">&times;</a>
                             {{calendarCtrl.message}}
                         </div>
                     </div> 
@@ -172,7 +171,6 @@
                <md-content class="md-padding">
                    <div class="container">
                         <div ng-class="calendarCtrl.class" ng-show="calendarCtrl.message">
-                                <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
                                 {{calendarCtrl.message}}
                         </div>
                    </div>

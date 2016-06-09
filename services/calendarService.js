@@ -28,8 +28,14 @@ angular.module('module')
 
                     // Cr�ation de l'objet complexe
                     for (var fixture in listFixtures) {
-                        listDates.push({ date: new Date(fixture).getTime(), data: listFixtures[fixture] });
+                        listDates.push({ date: new Date(fixture), data: listFixtures[fixture] });
                     }
+
+                    listDates.sort(function(a,b){
+                            // Turn your strings into dates, and then subtract them
+                            // to get a value that is either negative, positive, or zero.
+                            return new Date(a.date) - new Date(b.date);
+                     });       
 
                     return listDates;
                 });
@@ -53,8 +59,14 @@ angular.module('module')
 
                     // Cr�ation de l'objet complexe
                     for (var pronostic in listPronostics) {
-                        listDates.push({ date: new Date(pronostic).getTime(), data: listPronostics[pronostic] });
+                        listDates.push({ date: new Date(pronostic), data: listPronostics[pronostic] });
                     }
+
+                    listDates.sort(function(a,b){
+                            // Turn your strings into dates, and then subtract them
+                            // to get a value that is either negative, positive, or zero.
+                            return new Date(a.date) - new Date(b.date);
+                     });       
 
                     return listDates;
                 });
