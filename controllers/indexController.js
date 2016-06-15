@@ -18,6 +18,10 @@ angular.module('module')
         indexCtrl.profil = function () {
             $location.url('/profil');
         };
+        
+        indexCtrl.pronostic = function () {
+            $location.url('/prognosis');
+        };
 
         indexCtrl.getUserPath = function(){
             var user = authentificationService.getUser();

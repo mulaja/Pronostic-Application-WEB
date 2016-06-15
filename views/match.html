@@ -26,9 +26,9 @@
 										<td class="equipe">
                                             {{match.homeTeamName}}
                                         </td>
-                                        <td class="score"> {{match.result.goalsHomeTeam}}</td>
+                                        <td class="score"> {{match.goalsHomeTeam}}</td>
                                         <td class="separation"> - </td>
-                                        <td class="score">{{match.result.goalsAwayTeam}}</td>
+                                        <td class="score">{{match.goalsAwayTeam}}</td>
                                         <td class="equipe">
                                             {{match.awayTeamName}}
 										</td>
@@ -103,8 +103,8 @@
                             <th style="text-align :center;"><md-subheader>Avatar</md-subheader></th>
                             <th style="text-align :center;"><md-subheader>Pseudonyme</md-subheader></th>
                             <th style="text-align :center;"><md-subheader>Nombre de points</md-subheader></th>
+                            <th style="text-align :center;"><md-subheader>Nombre de score parfait</md-subheader></th>
                             <th style="text-align :center;"><md-subheader>Nombre de victoire</md-subheader></th>
-                            <th style="text-align :center;"><md-subheader>Nombre de score</md-subheader></th>
                         </tr>
                         <tr ng-repeat="rang in calendarCtrl.rangs" ng-class-odd="'impair'" ng-class-even="'pair'" ng-class="calendarCtrl.isMySelf(rang.id) ? 'border' : ''">
                             <td align="center">{{rang.rang}}</td>
@@ -128,8 +128,8 @@
                                 <th style="text-align :center;"><md-subheader>Avatar</md-subheader></th>
                                 <th style="text-align :center;"><md-subheader>Pseudonyme</md-subheader></th>
                                 <th style="text-align :center;"><md-subheader>Nombre de points</md-subheader></th>
+                                <th style="text-align :center;"><md-subheader>Nombre de score parfait</md-subheader></th>
                                 <th style="text-align :center;"><md-subheader>Nombre de victoire</md-subheader></th>
-                                <th style="text-align :center;"><md-subheader>Nombre de score</md-subheader></th>
                             </tr>
                             <tr ng-repeat="rang in group.classement" ng-class-odd="'impair'" ng-class-even="'pair'" ng-class="calendarCtrl.isMySelf(rang.id) ? 'border' : ''">
                                 <td align="center">{{rang.rang}}</td>

@@ -115,6 +115,7 @@ angular.module('module')
                     
                     // On ajoute le rang
                     var rang = 1;
+                    var compteur = 1;
                     var points = classement[0].points;
                     var winners = classement[0].winners;
                     var scores = classement[0].scores;
@@ -123,7 +124,7 @@ angular.module('module')
                     for (var i = 0; i < classement.length; i++) {
 
                         if (classement[i].points < points || classement[i].winners < winners || classement[i].scores < scores) {
-                            rang++;
+                            rang = compteur;
                         }
 
                         rangs.push({ rang: rang, id: classement[i].id, pseudonyme: classement[i].pseudonyme, points: classement[i].points, winners: classement[i].winners, scores: classement[i].scores, path : classement[i].path });
@@ -131,6 +132,8 @@ angular.module('module')
                         points = classement[i].points;
                         winners = classement[i].winners;
                         scores = classement[i].scores;
+                        
+                        compteur++;
                     }                  
                     calendarCtrl.groups.push({id : groups[index].id, nom : groups[index].nom, classement : rangs});
                 }
@@ -164,15 +167,15 @@ angular.module('module')
     calendarCtrl.compare = function (rang1, rang2) {
 
         // On compare le nombre de points
-        if (rang1.points < rang2.points) {
+        if (parseInt(rang1.points) < parseInt(rang2.points)) {
             return false;
         }
-        if (rang1.points == rang2.points) {
+        if (parseInt(rang1.points) == parseInt(rang2.points)) {
             // On compare le nombre de victoires
-            if (rang1.winners < rang2.winners) {
+            if (parseInt(rang1.winners) < parseInt(rang2.winners)) {
                 return false;
             }
-            if (rang1.winners = rang2.winners) {
+            if (parseInt(rang1.winners) == parseInt(rang2.winners)) {
                 // On compare le nombre de victoires
                 if (rang1.scores < rang2.scores) {
                     return false;
@@ -225,6 +228,7 @@ angular.module('module')
 
                     // On ajoute le rang
                     var rang = 1;
+                    var compteur = 1;
                     var points = classement[0].points;
                     var winners = classement[0].winners;
                     var scores = classement[0].scores;
@@ -232,7 +236,7 @@ angular.module('module')
                     for (var i = 0; i < classement.length; i++) {
 
                         if (classement[i].points < points || classement[i].winners < winners || classement[i].scores < scores) {
-                            rang++;
+                            rang = compteur;
                         }
 
                         calendarCtrl.rangs.push({ rang: rang, id: classement[i].id, pseudonyme: classement[i].pseudonyme, points: classement[i].points, winners: classement[i].winners, scores: classement[i].scores, path : classement[i].path });
@@ -240,6 +244,7 @@ angular.module('module')
                         points = classement[i].points;
                         winners = classement[i].winners;
                         scores = classement[i].scores;
+                        compteur++;
 
                     }
                     

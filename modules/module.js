@@ -26,10 +26,23 @@ angular.module('module', ['ngRoute', 'ngMaterial', 'ngResource','angular.img'])
         controller: 'calendarController',
         controllerAs: 'calendarCtrl'
     });
+    
     $routeProvider.when('/profil', {
         templateUrl: serverWEB+'/views/profil.html',
         controller: 'profilController',
         controllerAs: 'profilCtrl'
+    });
+    
+    $routeProvider.when('/classement', {
+        templateUrl: serverWEB+'/views/classement.html',
+        controller: 'classementController',
+        controllerAs: 'classementCtrl'
+    });
+    
+    $routeProvider.when('/prognosis', {
+        templateUrl: serverWEB+'/views/prognosis.html',
+        controller: 'prognosisController',
+        controllerAs: 'prognosisCtrl'
     });
 
     $routeProvider.otherwise({
