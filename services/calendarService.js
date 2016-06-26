@@ -22,7 +22,11 @@ angular.module('module')
                         if (!listFixtures[date]) {
                             listFixtures[date] = [];
                         }
-
+                        
+                        var time_full = response.data[i].date.substring(response.data[i].date.indexOf('T') +1,response.data[i].date.length-1);
+                        var time = time_full.substring(0,time_full.lastIndexOf(":"));
+                        response.data[i].time = time;
+                        
                         listFixtures[date].push(response.data[i]);
                     }
 
@@ -53,6 +57,10 @@ angular.module('module')
                         if (!listPronostics[date]) {
                             listPronostics[date] = [];
                         }
+
+                        var time_full = response.data[i].date.substring(response.data[i].date.indexOf('T') +1,response.data[i].date.length-1);
+                        var time = time_full.substring(0,time_full.lastIndexOf(":"));
+                        response.data[i].time = time;
 
                         listPronostics[date].push(response.data[i]);
                     }

@@ -5,19 +5,37 @@
             <md-list-item ng-repeat="fixture in prognosisCtrl.fixtures">
                 
                 <table>
-                    <tr>
-                        <td align="center" colspan="3">
-                            <md-subheader class="md-no-sticky">
-                                <img class="drapeau" ng-src="{{fixture.data.match.a_home_team_href}}" height="30" width="30">{{fixture.data.match.a_home_team_name}} {{fixture.data.match.score_home}}-
-                                {{fixture.data.match.score_away}} <img class="drapeau" ng-src="{{fixture.data.match.a_away_team_href}}" height="30" width="30">{{fixture.data.match.a_away_team_name}}
-                            </md-subheader>
+                    <tr>  
+                        <td class="drapeau">
+                            <img ng-src="{{fixture.data.match.a_home_team_href}}" height="30" width="30">
+                        </td>
+                        <td class="equipe">
+                            {{fixture.data.match.a_home_team_name}}
+                        </td>
+                        <td class="score">{{fixture.data.match.score_home}}</td>
+                        <td class="separation">-</td>
+                        <td class="score">{{fixture.data.match.score_away}}</td>  
+                        <td class="equipe">
+                            {{fixture.data.match.a_away_team_name}}
+                        </td>
+                        <td class="drapeau">
+                            <img ng-src="{{fixture.data.match.a_away_team_href}}" height="30" width="30">
+                        </td>
+                                                               
+                        <td align="right">
+                            <img class="drapeau" src="img\icons\plus.png" ng-click="prognosisCtrl.press(fixture.data.match.n_id_match)">
                         </td>
                     </tr>
-                    <tr ng-repeat="prono in fixture.data.prono" ng-class-odd="'impair'" ng-class-even="'pair'" ng-class="prognosisCtrl.isMySelf(prono.n_id_user) ? 'border' : ''">
+                    <tr ng-repeat="prono in fixture.data.prono | orderBy: '-points'" ng-class-odd="'impair'" ng-class-even="'pair'" ng-if="prognosisCtrl.affiche(fixture.data.match.n_id_match)" ng-class="prognosisCtrl.isMySelf(prono.n_id_user) ? 'border' : ''">
 
                         <td align="center"><img class="avatar" ng-src="{{prono.a_path}}" height="42" width="42"></td>
                         <td align="center">{{prono.a_pseudonyme}}</td>
-                        <td align="center">{{prono.n_goals_home_team}}-{{prono.n_goals_away_team}}</td>
+                        <td class="score">{{prono.n_goals_home_team}}</td>
+                        <td class="separation">-</td>
+                        <td class="score">{{prono.n_goals_away_team}}</td>
+                        <td>{{prono.points}}</td>
+                        <td>&nbsp;</td>
+                        <td>&nbsp;</td>
                     </tr>
                 </table>
             </md-list-item>

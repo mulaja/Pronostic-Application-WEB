@@ -17,14 +17,28 @@ angular.module('module')
     calendarCtrl.savePrognosis = function (pronostic) {
 
         var pronostics = [];
-
+        var validate = true;
         for (var i = 0; i < pronostic.length; i++) {
             if (pronostic[i].goalsAwayTeam && pronostic[i].goalsHomeTeam) {
-                pronostics.push({ id_match: pronostic[i].idMatch, goalsAwayTeam: pronostic[i].goalsAwayTeam, goalsHomeTeam: pronostic[i].goalsHomeTeam });
+                
+                if( parseInt(pronostic[i].matchday) > 3  ){
+                    var homeWinner = document.getElementById(pronostic[i].idMatch+'-home').checked;
+                    var awayWinner = document.getElementById(pronostic[i].idMatch+'-away').checked;
+                    
+                    if( (homeWinner && !awayWinner) || (!homeWinner && awayWinner)){
+                        pronostics.push({ id_match: pronostic[i].idMatch, goalsAwayTeam: pronostic[i].goalsAwayTeam, goalsHomeTeam: pronostic[i].goalsHomeTeam, winner : homeWinner ? pronostic[i].homeTeamName : pronostic[i].awayTeamName });
+                    }else{
+                        calendarCtrl.class = "alert alert-warning fade in";
+                        calendarCtrl.message = " Vous devez choisir un vainqueur";
+                        validate = false;
+                    }
+                }else{
+                    pronostics.push({ id_match: pronostic[i].idMatch, goalsAwayTeam: pronostic[i].goalsAwayTeam, goalsHomeTeam: pronostic[i].goalsHomeTeam});
+                }
             }
         }
 
-        if (pronostics.length > 0) {
+        if (pronostics.length > 0 && validate) {
             calendarService.savePrognosis({ id_user: authentificationService.getUser().id, pronostics: pronostics }).then(function (message) {
 
                 message.unchange > 0 ? calendarCtrl.class = "alert alert-warning fade in" : calendarCtrl.class = "alert alert-success fade in";
@@ -259,6 +273,19 @@ angular.module('module')
         if (calendarCtrl.isConnected()) {
             calendarService.getListPronostics(authentificationService.getUser().id).then(function (pronostics) {
                 calendarCtrl.pronostics = pronostics;
+                calendarCtrl.checklist = [];
+                // Initialisation des check-box
+                for(var i=0; i < pronostics.length; i++){
+                    for(var j=0; j< pronostics[i].data.length ; j++){
+                        if( pronostics[i].data[j].winner == pronostics[i].data[j].homeTeamName){
+                            calendarCtrl.checklist[pronostics[i].data[j].idMatch+'-home']=true;
+                        }
+                        
+                        if(pronostics[i].data[j].winner == pronostics[i].data[j].awayTeamName){
+                            calendarCtrl.checklist[pronostics[i].data[j].idMatch+'-away']=true;
+                        }
+                    }
+                }
                 
                 calendarCtrl.getClassement();
                 
